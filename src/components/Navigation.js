@@ -9,7 +9,7 @@ const Navigation = () => {
                 <Navbar.Collapse id='responsive-navbar-nav'>
                     <Nav>
                         <Nav.Link href='/'>Home</Nav.Link>
-                        <Nav.Link href='/circuit-simulator'>Falstad Circuit Simulator</Nav.Link>
+                        <Nav.Link href='/circuit-sim'>Falstad Circuit Simulator</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
