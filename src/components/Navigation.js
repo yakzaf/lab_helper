@@ -1,30 +1,30 @@
-import React from 'react';
-import {Navbar, Nav, Container} from 'react-bootstrap';
-import {Route, Switch, Link} from "react-router-dom";
+import React from "react";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
-    return (
-      <div className={"navbar"}>
-        <div>
-          <Navbar collapseOnSelect fixed='top' expand='sm' bg='dark' variant='dark'>
-            <Container>
-              <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-              <Navbar.Collapse id='responsive-navbar-nav'>
-                <Nav>
-                  <Nav.Link href='/'>Home</Nav.Link>
-                  <Nav.Link href='/circuit-sim'>Falstad Circuit Simulator</Nav.Link>
-                </Nav>
-              </Navbar.Collapse>
-            </Container>
+  return (
+    <div className="navbar">
+      <Navbar collapseOnSelect fixed="top" expand="sm" bg="dark" variant="dark">
+        <Container>
+          <Navbar>
+            <Navbar.Brand>Lab Helper</Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav>
+                <Nav.Link as={Link} to="/">
+                  Home
+                </Nav.Link>
+                <Nav.Link as={Link} to="/circuit-sim">
+                  Falstad Circuit Simulator
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
           </Navbar>
-        </div>
-        <div>
-          <Switch>
-            <Route exact path='/circuit-sim' component={Simulator} />
-          </Switch>
-        </div>
-      </div>
-    )
-}
+        </Container>
+      </Navbar>
+    </div>
+  );
+};
 
 export default Navigation;
