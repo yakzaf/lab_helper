@@ -1,0 +1,11 @@
+.circ-sim {
+  display: flex;
+  width: 50%;
+  height: 50%;
+  margin: auto;
+}
+
+.circ-sim iframe {
+  height: 100%;
+  width: 100%;
+}
