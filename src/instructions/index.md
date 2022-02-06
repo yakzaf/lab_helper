@@ -13,4 +13,4 @@ A table:
 
 Datagrid test:
 
-:dataTable{class='asdf' id='afsdf' columns='[{ "key": "id", "name": "ID" } , { "key": "title", "name": "Title" }]' rows='[{ "id": "0", "title": "Example" } , { "id": "1", "title": "Demo" }]'}
+:dataTable{class='asdf' id='afsdf' columns='[{ "key": "id", "name": "ID" } , { "key": "title", "name": "Titleasdf" } , { "key": "test", "name": "TestCol" }]' rows='[{ "id": "0", "title": "Example", "test": "" } , { "id": "1", "title": "Demo", "test": "" } , { "id": "2", "title": "Demo1", "test": "" }]'}

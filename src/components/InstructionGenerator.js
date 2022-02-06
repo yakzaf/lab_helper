@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import ReactMarkdown from "react-markdown";
 import directive from "remark-directive";
 import { visit } from "unist-util-visit";
 import { h } from "hastscript/html.js";
 import remarkGfm from "remark-gfm";
 import DataGrid, { TextEditor } from "react-data-grid";
+import { isEqual } from "lodash";
 
 const InstructionGenerator = () => {
   const [inst, setInst] = useState("");
-  const [rowsTest, setRows] = useState([
-    { id: 0, title: "" },
-    { id: 1, title: "" },
-  ]);
+  const [rows, setRows] = useState([]);
+  const [cols, setCols] = useState([]);
 
   //fetching the instruction file
   useEffect(() => {
@@ -27,8 +26,8 @@ const InstructionGenerator = () => {
 
   //hook for updating data table
   useEffect(() => {
-    console.log(rowsTest);
-  }, [rowsTest]);
+    console.log(rows);
+  }, [rows]);
 
   const reactMarkdownRemarkDirective = () => {
     return transform;
@@ -53,24 +52,29 @@ const InstructionGenerator = () => {
 
   const customDirectives = {
     dataTable: (attr) => {
-      let cols = attr.columns.slice(1, -1).split(" , ");
-      let colsObj = cols.map((x) => JSON.parse(x));
-      for (let i = 0; i < colsObj.length; i++) {
-        colsObj[i].editable = true;
-        colsObj[i].editor = TextEditor;
+      let colsMd = attr.columns.slice(1, -1).split(" , ");
+      let colsMdObj = colsMd.map((x) => JSON.parse(x));
+      let rowsMd = attr.rows.slice(1, -1).split(" , ");
+      let rowsMdObj = rowsMd.map((x) => JSON.parse(x));
+
+      for (let i = 0; i < colsMdObj.length; i++) {
+        colsMdObj[i].editable = true;
+        colsMdObj[i].editor = TextEditor;
       }
 
-      let rows = attr.rows.slice(1, -1).split(" , ");
-      let rowsObj = rows.map((x) => JSON.parse(x));
-      // setRows(rowsObj);
+      //set proper state for rows and cols ONCE per page load (cols don't change outside of the md file)
+      if (!isEqual(cols, colsMdObj)) {
+        setCols(colsMdObj);
+        setRows(rowsMdObj);
+      }
 
       return (
         <DataGrid
           className={attr.className}
           id={attr.id}
-          rows={rowsTest}
+          rows={rows}
           onRowsChange={setRows}
-          columns={colsObj}
+          columns={cols}
         />
       );
     },
