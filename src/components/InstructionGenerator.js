@@ -5,12 +5,14 @@ import { visit } from "unist-util-visit";
 import { h } from "hastscript/html.js";
 import remarkGfm from "remark-gfm";
 import DataGrid, { TextEditor } from "react-data-grid";
-import { isEqual } from "lodash";
+import _ from "lodash";
+import Plot from "react-plotly.js";
 
 const InstructionGenerator = () => {
   const [inst, setInst] = useState("");
   const [rows, setRows] = useState([]);
   const [cols, setCols] = useState([]);
+  const [plotData, setPlotData] = useState({});
 
   //fetching the instruction file
   useEffect(() => {
@@ -26,7 +28,43 @@ const InstructionGenerator = () => {
 
   //hook for updating data table
   useEffect(() => {
-    console.log(rows);
+    // console.log(rows);
+    // console.log(cols);
+
+    if (!_.isEmpty(rows)) {
+      let data = [
+        {
+          x: [],
+          y: [],
+        },
+      ];
+      // let layout = { xaxis: { title: "" }, yaxis: { title: "" }, title: "" };
+
+      for (let i = 0; i < rows.length; i++) {
+        data[0]["x"].push(parseFloat(rows[i]["x"]));
+        data[0]["y"].push(parseFloat(rows[i]["y"]));
+      }
+      //   let plotObj = {
+      //     data: [
+      //       {
+      //         x: attr.x,
+      //         y: attr.y,
+      //         type: attr.type,
+      //       },
+      //     ],
+      //     layout: {
+      //       xaxis: { title: attr.xtitle },
+      //       yaxis: { title: attr.ytitle },
+      //       title: attr.plotTitle,
+      //     },
+      //   };
+      setPlotData((prevState) => ({
+        ...prevState,
+        x: data[0]["x"],
+        y: data[0]["y"],
+      }));
+      console.log(plotData);
+    }
   }, [rows]);
 
   const reactMarkdownRemarkDirective = () => {
@@ -63,7 +101,7 @@ const InstructionGenerator = () => {
       }
 
       //set proper state for rows and cols ONCE per page load (cols don't change outside of the md file)
-      if (!isEqual(cols, colsMdObj)) {
+      if (!_.isEqual(cols, colsMdObj)) {
         setCols(colsMdObj);
         setRows(rowsMdObj);
       }
@@ -77,6 +115,31 @@ const InstructionGenerator = () => {
           columns={cols}
         />
       );
+    },
+
+    chart: (attr) => {
+      let layout = {};
+      if (!_.isEmpty(attr)) {
+        if (_.isEmpty(plotData.type)) {
+          setPlotData((prevState) => ({
+            ...prevState,
+            type: attr.type,
+          }));
+        }
+        if (!_.isEmpty(cols)) {
+          let xTitleArr = cols.filter((el) => {
+            return el.key === "x";
+          });
+          let yTitleArr = cols.filter((el) => {
+            return el.key === "y";
+          });
+          layout.xaxis = { title: xTitleArr[0]["name"] };
+          layout.yaxis = { title: yTitleArr[0]["name"] };
+          layout.title = attr.plotTitle;
+        }
+      }
+
+      return <Plot data={[plotData]} layout={layout} />;
     },
   };
 

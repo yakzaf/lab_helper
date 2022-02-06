@@ -13,4 +13,5 @@ A table:
 
 Datagrid test:
 
-:dataTable{class='asdf' id='afsdf' columns='[{ "key": "id", "name": "ID" } , { "key": "title", "name": "Titleasdf" } , { "key": "test", "name": "TestCol" }]' rows='[{ "id": "0", "title": "Example", "test": "" } , { "id": "1", "title": "Demo", "test": "" } , { "id": "2", "title": "Demo1", "test": "" }]'}
+:dataTable{class='asdf' id='afsdf' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "Titleasdf" } , { "key": "y", "name": "TestCol" }]' rows='[{ "id": "0", "x": "", "y": "" } , { "id": "1", "x": "", "y": "" } , { "id": "2", "x": "", "y": "" }]'}
+:chart{class='chart-test' plotTitle='Test Plot' type='scatter'}
