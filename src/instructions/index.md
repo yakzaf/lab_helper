@@ -12,6 +12,10 @@ A table:
 | :input{.input-test-21} | :input{.input-test-22} | :input{.input-test-23} |
 
 Datagrid test:
+:::div{id='parent'}
+:dataTable{class='asdf' id='afsdf' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "T564651itleasdf" } , { "key": "y", "name": "TestCol" }]' rows='[{ "id": "0", "x": "", "y": "" } , { "id": "1", "x": "", "y": "" } , { "id": "2", "x": "", "y": "" }]'}
+this is a test of a datagrid blah blah blah
+:::
+:dataTable{class='test' id='fdsa' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "Titleasdf" } , { "key": "y", "name": "TestCol" }]' rows='[{ "id": "0", "x": "", "y": "" } , { "id": "1", "x": "", "y": "" } , { "id": "2", "x": "", "y": "" }]'}
 
-:dataTable{class='asdf' id='afsdf' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "Titleasdf" } , { "key": "y", "name": "TestCol" }]' rows='[{ "id": "0", "x": "", "y": "" } , { "id": "1", "x": "", "y": "" } , { "id": "2", "x": "", "y": "" }]'}
-:chart{class='chart-test' plotTitle='Test Plot' type='scatter'}
+:chart{class='chart-test' tableId='fdsa' plotTitle='Test Plot' type='scatter'}

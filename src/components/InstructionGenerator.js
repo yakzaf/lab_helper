@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import DataGrid, { TextEditor } from "react-data-grid";
 import _ from "lodash";
 import Plot from "react-plotly.js";
+import DataTable from "./DataTable";
 
 const InstructionGenerator = () => {
   const [inst, setInst] = useState("");
@@ -26,11 +27,8 @@ const InstructionGenerator = () => {
     fetchFile().catch(console.error);
   }, []);
 
-  //hook for updating data table
+  //hook for updating plot data
   useEffect(() => {
-    // console.log(rows);
-    // console.log(cols);
-
     if (!_.isEmpty(rows)) {
       let data = [
         {
@@ -63,7 +61,6 @@ const InstructionGenerator = () => {
         x: data[0]["x"],
         y: data[0]["y"],
       }));
-      console.log(plotData);
     }
   }, [rows]);
 
@@ -89,66 +86,18 @@ const InstructionGenerator = () => {
   };
 
   const customDirectives = {
-    dataTable: (attr) => {
-      let colsMd = attr.columns.slice(1, -1).split(" , ");
-      let colsMdObj = colsMd.map((x) => JSON.parse(x));
-      let rowsMd = attr.rows.slice(1, -1).split(" , ");
-      let rowsMdObj = rowsMd.map((x) => JSON.parse(x));
+    dataTable: (attr) => DataTable(attr),
 
-      for (let i = 0; i < colsMdObj.length; i++) {
-        colsMdObj[i].editable = true;
-        colsMdObj[i].editor = TextEditor;
-      }
-
-      //set proper state for rows and cols ONCE per page load (cols don't change outside of the md file)
-      if (!_.isEqual(cols, colsMdObj)) {
-        setCols(colsMdObj);
-        setRows(rowsMdObj);
-      }
-
-      return (
-        <DataGrid
-          className={attr.className}
-          id={attr.id}
-          rows={rows}
-          onRowsChange={setRows}
-          columns={cols}
-        />
-      );
-    },
-
-    chart: (attr) => {
-      let layout = {};
-      if (!_.isEmpty(attr)) {
-        if (_.isEmpty(plotData.type)) {
-          setPlotData((prevState) => ({
-            ...prevState,
-            type: attr.type,
-          }));
-        }
-        if (!_.isEmpty(cols)) {
-          let xTitleArr = cols.filter((el) => {
-            return el.key === "x";
-          });
-          let yTitleArr = cols.filter((el) => {
-            return el.key === "y";
-          });
-          layout.xaxis = { title: xTitleArr[0]["name"] };
-          layout.yaxis = { title: yTitleArr[0]["name"] };
-          layout.title = attr.plotTitle;
-        }
-      }
-
-      return <Plot data={[plotData]} layout={layout} />;
-    },
+    // chart: (attr) => Chart(attr),
   };
 
   return (
     <ReactMarkdown
       remarkPlugins={[directive, reactMarkdownRemarkDirective, remarkGfm]}
       components={customDirectives}
-      children={inst}
-    />
+    >
+      {inst}
+    </ReactMarkdown>
   );
 };
 
