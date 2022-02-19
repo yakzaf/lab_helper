@@ -1,11 +1,13 @@
-import DataGrid, { TextEditor } from "react-data-grid";
-import React, { useEffect, useState, useRef } from "react";
+import DataGrid, { Column, DataGridHandle, TextEditor } from "react-data-grid";
+import React, { useEffect, useState, useRef, FC } from "react";
 import _ from "lodash";
+import { DTAttr } from "../types";
 
-const DataTable = (attr) => {
-  const [rows, setRows] = useState([]);
-  const [cols, setCols] = useState([]);
-  const tableRef = useRef();
+const DataTable: FC<DTAttr> = (attr) => {
+  // console.log(attr);
+  const [rows, setRows] = useState(Array);
+  const [cols, setCols] = useState<Column<unknown>[]>(Array);
+  const tableRef = useRef<DataGridHandle | null>(null);
 
   let colsMd = attr.columns.slice(1, -1).split(" , ");
   let colsMdObj = colsMd.map((x) => JSON.parse(x));
@@ -26,7 +28,6 @@ const DataTable = (attr) => {
     <DataGrid
       ref={tableRef}
       className={attr.className}
-      id={attr.id}
       rows={rows}
       onRowsChange={setRows}
       columns={cols}

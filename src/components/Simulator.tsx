@@ -1,7 +1,7 @@
 import "./Simulator.css";
-import React from "react";
+import React, { FC } from "react";
 
-const Simulator = () => {
+const Simulator: FC = () => {
   return (
     <div className="circ-sim">
       <iframe
