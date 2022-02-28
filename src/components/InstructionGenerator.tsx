@@ -1,15 +1,11 @@
-import React, { useEffect, useState, useReducer, FC } from "react";
+import React, { useEffect, useState, FC } from "react";
 import ReactMarkdown from "react-markdown";
 import directive from "remark-directive";
 import { visit } from "unist-util-visit";
 import { h } from "hastscript/html.js";
 import remarkGfm from "remark-gfm";
-import DataGrid, { TextEditor } from "react-data-grid";
-import _ from "lodash";
-import Plot from "react-plotly.js";
 import DataTable from "./DataTable";
 import { DTAttr } from "../types";
-
 // {
 //   "type": "element",
 //     "tagName": "chart",
@@ -26,9 +22,7 @@ import { DTAttr } from "../types";
 
 const InstructionGenerator: FC = () => {
   const [inst, setInst] = useState("");
-  const [rows, setRows] = useState([]);
-  const [cols, setCols] = useState([]);
-  const [plotData, setPlotData] = useState({});
+  // const [plotData, setPlotData] = useState({});
 
   //fetching the instruction file
   useEffect(() => {
@@ -94,7 +88,7 @@ const InstructionGenerator: FC = () => {
         node.type === "containerDirective"
       ) {
         let hast: any = h(node.name, node.attributes);
-        console.log(hast);
+        // console.log(hast);
         data.hName = node.name;
         data.hProperties = hast.properties;
       }
