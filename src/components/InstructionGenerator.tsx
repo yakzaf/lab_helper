@@ -5,7 +5,8 @@ import { visit } from "unist-util-visit";
 import { h } from "hastscript/html.js";
 import remarkGfm from "remark-gfm";
 import DataTable from "./DataTable";
-import { DTAttr } from "../types";
+import Chart from "./Chart";
+import { ChartAttr, DTAttr } from "../types";
 // {
 //   "type": "element",
 //     "tagName": "chart",
@@ -97,7 +98,7 @@ const InstructionGenerator: FC = () => {
 
   const customDirectives: any = {
     dataTable: (attr: DTAttr) => DataTable(attr),
-    // chart: (attr) => Chart(attr),
+    chart: (attr: ChartAttr) => Chart(attr),
   };
 
   return (

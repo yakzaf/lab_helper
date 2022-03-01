@@ -1,37 +1,47 @@
 import _ from "lodash";
 import Plot from "react-plotly.js";
-import React, { FC, useState } from "react";
-import { ChartAttr } from "../types";
+import React, { FC } from "react";
+import { ChartAttr, TableState } from "../types";
+import { useSelector } from "react-redux";
+import { PlotData } from "plotly.js";
 
 const Chart: FC<ChartAttr> = (attr) => {
+  console.log(attr);
+  const tableState = useSelector(
+    (state: TableState) => state.dBReducer.tableData
+  );
   let layout = {
     xaxis: {},
     yaxis: {},
     title: "",
   };
 
-  const [plotData, setPlotData] = useState<{}>({});
+  let plotData: Partial<PlotData> = {};
   if (!_.isEmpty(attr)) {
-    let table = document.querySelector(`#${attr.tableId}`);
-    // @ts-ignore
-    if (_.isEmpty(plotData.type)) {
-      setPlotData((prevState) => ({
-        ...prevState,
-        type: attr.type,
-      }));
+    const tableId = attr.table_id;
+    if (typeof tableState[tableId] !== "undefined") {
+      const cols = tableState[tableId].cols;
+      let xTitleArr = cols.filter((el: { key: string; name: string }) => {
+        return el.key === "x";
+      });
+      let yTitleArr = cols.filter((el: { key: string; name: string }) => {
+        return el.key === "y";
+      });
+      layout.xaxis = { title: xTitleArr[0]["name"] };
+      layout.yaxis = { title: yTitleArr[0]["name"] };
+      layout.title = attr.plot_title;
+
+      const rows = tableState[tableId].rows;
+      plotData.x = rows.map((child: { x: string; y: string }) =>
+        parseFloat(child.x)
+      );
+      plotData.y = rows.map((child: { x: string; y: string }) =>
+        parseFloat(child.y)
+      );
     }
-    // if (!_.isEmpty(cols)) {
-    //   let xTitleArr = cols.filter((el) => {
-    //     return el.key === "x";
-    //   });
-    //   let yTitleArr = cols.filter((el) => {
-    //     return el.key === "y";
-    //   });
-    //   layout.xaxis = { title: xTitleArr[0]["name"] };
-    //   layout.yaxis = { title: yTitleArr[0]["name"] };
-    //   layout.title = attr.plotTitle;
-    // }
   }
 
   return <Plot data={[plotData]} layout={layout} />;
 };
+
+export default Chart;

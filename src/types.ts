@@ -8,8 +8,8 @@ export interface DTAttr {
 
 export interface ChartAttr {
   className?: string;
-  tableId?: string;
-  plotTitle: string;
+  table_id: string;
+  plot_title: string;
   type: string;
 }
 
