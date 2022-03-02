@@ -12,4 +12,17 @@ const Simulator: FC = () => {
   );
 };
 
+const SimulatorMd: FC<any> = (attr) => {
+  return (
+    <div className="csim-md" {...attr.id}>
+      <iframe
+        title="falstad-sim"
+        src="https://www.falstad.com/circuit/circuitjs.html"
+      />
+    </div>
+  );
+};
+
 export default Simulator;
+
+export { SimulatorMd };
