@@ -1,15 +1,20 @@
-import React from "react";
+import React, { FC } from "react";
 import Navigation from "./Navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
 import Simulator from "./Simulator";
+import InstructionGenerator from "./InstructionGenerator";
 
-const App = () => {
+const App: FC = () => {
   return (
-    <div className="app" style={{ display: "flex" }}>
+    <div className="app">
       <Navigation />
       <Routes>
         <Route path="/circuit-sim" element={<Simulator />} />
+        <Route
+          path="/generate-instruction"
+          element={<InstructionGenerator />}
+        />
       </Routes>
     </div>
   );

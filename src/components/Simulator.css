@@ -3,6 +3,7 @@
   width: 50%;
   height: 50%;
   margin: auto;
+  transform: translateY(50%);
 }
 
 .circ-sim iframe {

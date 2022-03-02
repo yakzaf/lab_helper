@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation: FC = () => {
   return (
     <div className="navbar">
       <Navbar collapseOnSelect fixed="top" expand="sm" bg="dark" variant="dark">
@@ -17,6 +17,9 @@ const Navigation = () => {
                 </Nav.Link>
                 <Nav.Link as={Link} to="/circuit-sim">
                   Falstad Circuit Simulator
+                </Nav.Link>
+                <Nav.Link as={Link} to="/generate-instruction">
+                  Instruction Generator
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
