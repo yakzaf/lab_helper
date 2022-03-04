@@ -32,11 +32,14 @@ const Chart: FC<ChartAttr> = (attr) => {
       layout.title = attr.plot_title;
 
       const rows = tableState[tableId].rows;
-      plotData.x = rows.map((child: { x: string; y: string }) =>
-        parseFloat(child.x)
+      const xRow = attr.x,
+        yRow = attr.y;
+      console.log(xRow, yRow);
+      plotData.x = rows.map((child: { [xRow: string]: string }) =>
+        parseFloat(child[xRow])
       );
-      plotData.y = rows.map((child: { x: string; y: string }) =>
-        parseFloat(child.y)
+      plotData.y = rows.map((child: { [xRow: string]: string }) =>
+        parseFloat(child[yRow])
       );
     }
   }
