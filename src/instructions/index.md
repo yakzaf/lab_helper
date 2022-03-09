@@ -18,5 +18,5 @@ this is a test of a datagrid blah blah blah
 :::
 :dataTable{class='test' table_id='table2' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "Titleasdf" } , { "key": "y", "name": "TestCol" }]' rows='[{ "id": "0", "x": "", "y": "" } , { "id": "1", "x": "", "y": "" } , { "id": "2", "x": "", "y": "" }]'}
 
-:chart{table_id='table1' plot_title='table1' type='scatter' x='id' y='x'}
-:chart{table_id='table2' plot_title='table2' type='scatter' x='x' y='y'}
+:chart{table_id='table1' plot_title='table1' type='scatter' x='id' y='[x]'}
+:chart{table_id='table2' plot_title='table2' type='scatter' x='x' y='[id, y]'}

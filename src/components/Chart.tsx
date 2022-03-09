@@ -1,12 +1,12 @@
-import _ from "lodash";
-import Plot from "react-plotly.js";
 import React, { FC } from "react";
 import { ChartAttr, TableState } from "../types";
+
 import { useSelector } from "react-redux";
 import { PlotData } from "plotly.js";
+import Plot from "react-plotly.js";
+import _ from "lodash";
 
 const Chart: FC<ChartAttr> = (attr) => {
-  console.log(attr);
   const tableState = useSelector(
     (state: TableState) => state.dBReducer.tableData
   );
@@ -16,7 +16,7 @@ const Chart: FC<ChartAttr> = (attr) => {
     title: "",
   };
 
-  let plotData: Partial<PlotData> = {};
+  let plotData: Array<Partial<PlotData>> = [];
   if (!_.isEmpty(attr)) {
     const tableId = attr.table_id;
     if (typeof tableState[tableId] !== "undefined") {
@@ -33,18 +33,25 @@ const Chart: FC<ChartAttr> = (attr) => {
 
       const rows = tableState[tableId].rows;
       const xRow = attr.x,
-        yRow = attr.y;
-      console.log(xRow, yRow);
-      plotData.x = rows.map((child: { [xRow: string]: string }) =>
-        parseFloat(child[xRow])
-      );
-      plotData.y = rows.map((child: { [xRow: string]: string }) =>
-        parseFloat(child[yRow])
-      );
+        yRows = attr.y
+          .slice(1, -1)
+          .split(",")
+          .map((item: string) => item.trim());
+
+      // put all the same x row in each object with separate y rows
+      for (let i = 0; i < yRows.length; i++) {
+        plotData.push({});
+        plotData[i].x = rows.map((child: { [xRow: string]: string }) =>
+          parseFloat(child[xRow])
+        );
+        plotData[i].y = rows.map((child: { [yRow: string]: string }) =>
+          parseFloat(child[yRows[i]])
+        );
+      }
     }
   }
 
-  return <Plot data={[plotData]} layout={layout} />;
+  return <Plot data={plotData} layout={layout} />;
 };
 
 export default Chart;
