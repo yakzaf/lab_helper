@@ -6,10 +6,10 @@ A paragraph with *emphasis* and **strong importance**.
 
 A table:
 
-|   a  |   b   | c |
-| - | - | - |
+|                a                            |        b               |       c                |
+|                -                            |        -               |       -                |
 | :input{id=input-test-11 class='test-class'} | :input{.input-test-12} | :input{.input-test-13} |
-| :input{.input-test-21} | :input{.input-test-22} | :input{.input-test-23} |
+| :input{.input-test-21}                      | :input{.input-test-22} | :input{.input-test-23} |
 
 Datagrid test:
 :::div{id='parent'}
