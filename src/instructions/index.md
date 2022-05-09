@@ -48,14 +48,14 @@ h 1 4 3
 
 Datagrid test:
 :::div{id='parent'}
-:dataTable{class='asdfdfsdfdsfsdfsf' table_id='table1' columns='[ { "id": "ID" } , [ "x", "T564651itleasdf" ], [ "y", "TestCol" ]]' rows='[{ "id": "0", "x": "", "y": "" } , { "id": "1", "x": "", "y": "" } , { "id": "2", "x": "", "y": "" }]'}
+:dataTable{class='asdfdfsdfdsfsdfsf rdg-light' table_id='table1' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "T564651itleasdf" } , { "key": "y", "name": "TestCol" }]' rows='[{ "id": "0", "x": "", "y": "" } , { "id": "1", "x": "", "y": "" } , { "id": "2", "x": "", "y": "" }]'}
 this is a test of a datagrid blah blah blah
 :::
-:dataTable{class='test' table_id='table2' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "Titleasdf" } , { "key": "y", "name": "TestCol" }]' rows='[{ "id": "0", "x": "", "y": "" } , { "id": "1", "x": "", "y": "" } , { "id": "2", "x": "", "y": "" }]'}
+:dataTable{class='test rdg-light' table_id='table2' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "Titleasdf" } , { "key": "y", "name": "TestCol" }]' rows='[{ "id": "0", "x": "", "y": "" } , { "id": "1", "x": "", "y": "" } , { "id": "2", "x": "", "y": "" }]'}
 
-:chart{table_id='table1' plot_title='table1' type='scatter'}
+:chart{table_id='table1' plot_title='table1' types='[waterfall]' x='id' y='[x]'}
 asdfasdfasd
-:chart{table_id='table2' plot_title='table2' type='scatter'}
+:chart{table_id='table2' plot_title='table2' types='[scatter, bar]' x='x' y='[id, y]'}
 
 :circuitSim{id='csim1'}
 

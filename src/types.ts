@@ -12,7 +12,7 @@ export interface ChartAttr {
   x: string;
   y: string;
   plot_title: string;
-  type: string;
+  types: string;
 }
 
 export interface TableState {
