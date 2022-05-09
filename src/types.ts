@@ -9,8 +9,10 @@ export interface DTAttr {
 export interface ChartAttr {
   className?: string;
   table_id: string;
+  x: string;
+  y: string;
   plot_title: string;
-  type: string;
+  types: string;
 }
 
 export interface TableState {
