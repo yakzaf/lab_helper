@@ -1,12 +1,14 @@
-import _ from "lodash";
-import Plot from "react-plotly.js";
 import React, { FC } from "react";
 import { ChartAttr, TableState } from "../types";
+
 import { useSelector } from "react-redux";
+
 import { PlotData, PlotType } from "plotly.js";
+import Plot from "react-plotly.js";
+import _ from "lodash";
+
 
 const Chart: FC<ChartAttr> = (attr) => {
-  console.log(attr);
   const tableState = useSelector(
     (state: TableState) => state.dBReducer.tableData
   );
@@ -33,7 +35,6 @@ const Chart: FC<ChartAttr> = (attr) => {
 
       const rows = tableState[tableId].rows;
 
-
       const xRow = attr.x,
         yRows = attr.y
           .slice(1, -1)
@@ -52,6 +53,7 @@ const Chart: FC<ChartAttr> = (attr) => {
         plotData[i].y = rows.map((child: { [yRow: string]: string }) =>
           parseFloat(child[yRows[i]])
         );
+
         plotData[i].type = traceTypes[i] as PlotType;
       }
       // plotData.x = rows.map((child: { x: string; y: string }) =>
