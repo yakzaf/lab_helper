@@ -46,14 +46,15 @@ o 0 64 0 4099 0.625 0.05 2 2 0 3
 h 1 4 3
 ```
 
-Datagrid test:
+# `react-data-grid` demonstration:
+## Illuminance measurements at different wavelengths
 :::div{id='parent'}
-:dataTable{class='asdfdfsdfdsfsdfsf rdg-light' table_id='table1' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "T564651itleasdf" } , { "key": "y", "name": "TestCol" }]' rows='[{ "id": "0", "x": "", "y": "" } , { "id": "1", "x": "", "y": "" } , { "id": "2", "x": "", "y": "" }]'}
-this is a test of a datagrid blah blah blah
+:dataTable{class='asdfdfsdfdsfsdfsf rdg-light' table_id='table1' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "Wavelength [nm]" } , { "key": "y", "name": "Illuminance [lx]" }]' rows='[{ "id": "1", "x": "", "y": "" } , { "id": "2", "x": "", "y": "" } , { "id": "3", "x": "", "y": "" } , { "id": "4", "x": "", "y": "" } , { "id": "5", "x": "", "y": "" }]'}
 :::
+
 :dataTable{class='test rdg-light' table_id='table2' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "Titleasdf" } , { "key": "y", "name": "TestCol" }]' rows='[{ "id": "0", "x": "", "y": "" } , { "id": "1", "x": "", "y": "" } , { "id": "2", "x": "", "y": "" }]'}
 
-:chart{table_id='table1' plot_title='table1' types='[waterfall]' x='id' y='[x]'}
+:chart{table_id='table1' plot_title='E_v = f(λ)' types='[scatter]' x='x' y='[y]'}
 asdfasdfasd
 :chart{table_id='table2' plot_title='table2' types='[scatter, bar]' x='x' y='[id, y]'}
 
