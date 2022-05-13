@@ -1,3 +1,5 @@
+import './InstructionGenerator.css';
+
 import React, { useEffect, useState, FC } from "react";
 import ReactMarkdown from "react-markdown";
 import directive from "remark-directive";
@@ -52,12 +54,15 @@ const InstructionGenerator: FC = () => {
   };
 
   return (
+    <div className='mdown-container'>
     <ReactMarkdown
       remarkPlugins={[directive, reactMarkdownRemarkDirective, remarkGfm]}
       components={customDirectives}
+      className='mdown-contents'
     >
       {inst}
     </ReactMarkdown>
+    </div>
   );
 };
 
