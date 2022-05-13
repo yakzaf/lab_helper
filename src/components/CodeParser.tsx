@@ -11,9 +11,13 @@ const CodeParser: FC<Attr> = (attr) => {
     
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log((e.target as HTMLTextAreaElement).value);
         
-        setParsedVal(eval((e.target as HTMLTextAreaElement).value))
+        console.log(value);
+        try {
+            setParsedVal(eval(value));
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     return (
