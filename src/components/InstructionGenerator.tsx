@@ -9,7 +9,8 @@ import remarkGfm from "remark-gfm";
 import DataTable from "./DataTable";
 import Chart from "./Chart";
 import { SimulatorMd } from "./Simulator";
-import { ChartAttr, DTAttr } from "../types";
+import CodeParser from "./CodeParser";
+import { ChartAttr, DTAttr, Attr } from "../types";
 
 const InstructionGenerator: FC = () => {
   const [inst, setInst] = useState("");
@@ -51,6 +52,7 @@ const InstructionGenerator: FC = () => {
     dataTable: (attr: DTAttr) => DataTable(attr),
     chart: (attr: ChartAttr) => Chart(attr),
     circuitSim: (attr: any) => SimulatorMd(attr),
+    jsParser: (attr: Attr) => CodeParser(attr)
   };
 
   return (

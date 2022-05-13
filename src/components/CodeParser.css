@@ -1,0 +1,14 @@
+.code-parser {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#parser-form {
+    display: flex;
+    flex-direction: column;
+}
+#parser-form, #parser-input, #parser-output {
+    width: 100%;
+}

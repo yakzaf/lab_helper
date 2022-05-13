@@ -1,3 +1,8 @@
+export interface Attr {
+  className?: string;
+  id?: string;
+}
+
 export interface DTAttr {
   rows: string;
   columns: string;

@@ -11,9 +11,6 @@ A table:
 | :input{id=input-test-11 class='test-class'} | :input{.input-test-12} | :input{.input-test-13} |
 | :input{.input-test-21}                      | :input{.input-test-22} | :input{.input-test-23} |
 
-# Expressions in JS.
-:::js{  }
-
 
 ```mermaid
 gantt
@@ -70,3 +67,6 @@ enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
 Duis aute irure dolor in reprehenderit in
 
 voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+Code parser test:
+:jsParser{id='parser-test'}
