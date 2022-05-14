@@ -7,7 +7,6 @@ import { PlotData, PlotType } from "plotly.js";
 import Plot from "react-plotly.js";
 import _ from "lodash";
 
-
 const Chart: FC<ChartAttr> = (attr) => {
   const tableState = useSelector(
     (state: TableState) => state.dBReducer.tableData
@@ -31,7 +30,7 @@ const Chart: FC<ChartAttr> = (attr) => {
       });
       layout.xaxis = { title: xTitleArr[0]["name"] };
       layout.yaxis = { title: yTitleArr[0]["name"] };
-      layout.title = attr.plot_title;
+      layout.title = attr.chart_title;
 
       const rows = tableState[tableId].rows;
 
@@ -40,9 +39,10 @@ const Chart: FC<ChartAttr> = (attr) => {
           .slice(1, -1)
           .split(",")
           .map((item: string) => item.trim()),
-        traceTypes = attr.types.slice(1, -1)
-        .split(",")
-        .map((item: string) => item.trim());
+        traceTypes = attr.types
+          .slice(1, -1)
+          .split(",")
+          .map((item: string) => item.trim());
 
       // put all the same x row in each object with separate y rows
       for (let i = 0; i < yRows.length; i++) {
@@ -62,7 +62,6 @@ const Chart: FC<ChartAttr> = (attr) => {
       // plotData.y = rows.map((child: { x: string; y: string }) =>
       //   parseFloat(child.y)
       // );
-      
     }
   }
 

@@ -1,4 +1,4 @@
-import './InstructionGenerator.css';
+import "./InstructionGenerator.css";
 
 import React, { useEffect, useState, FC } from "react";
 import ReactMarkdown from "react-markdown";
@@ -12,20 +12,24 @@ import { SimulatorMd } from "./Simulator";
 import CodeParser from "./CodeParser";
 import { ChartAttr, DTAttr, Attr } from "../types";
 
-const InstructionGenerator: FC = () => {
-  const [inst, setInst] = useState("");
+interface Props {
+  filename: string;
+}
 
+const InstructionGenerator: FC<Props> = ({ filename }) => {
+  const [inst, setInst] = useState("");
+  console.log(filename);
   //fetching the instruction file
   useEffect(() => {
     const fetchFile = async () => {
-      const file = await import("../instructions/index.md");
+      const file = await import(`../instructions/${filename}.md`);
       const res = await fetch(file.default);
       const text = await res.text();
       setInst(text);
     };
 
     fetchFile().catch(console.error);
-  }, []);
+  });
 
   const reactMarkdownRemarkDirective = () => {
     return transform;
@@ -52,18 +56,18 @@ const InstructionGenerator: FC = () => {
     dataTable: (attr: DTAttr) => DataTable(attr),
     chart: (attr: ChartAttr) => Chart(attr),
     circuitSim: (attr: any) => SimulatorMd(attr),
-    jsParser: (attr: Attr) => CodeParser(attr)
+    jsParser: (attr: Attr) => CodeParser(attr),
   };
 
   return (
-    <div className='mdown-container'>
-    <ReactMarkdown
-      remarkPlugins={[directive, reactMarkdownRemarkDirective, remarkGfm]}
-      components={customDirectives}
-      className='mdown-contents'
-    >
-      {inst}
-    </ReactMarkdown>
+    <div className="mdown-container">
+      <ReactMarkdown
+        remarkPlugins={[directive, reactMarkdownRemarkDirective, remarkGfm]}
+        components={customDirectives}
+        className="mdown-contents"
+      >
+        {inst}
+      </ReactMarkdown>
     </div>
   );
 };
