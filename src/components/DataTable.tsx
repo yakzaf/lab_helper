@@ -59,7 +59,7 @@ const DataTable: FC<DTAttr> = (attr) => {
   // }
   return (
     <DataGrid
-      className={attr.className}
+      className={`${attr.className} rdg-light`}
       rows={rows}
       onRowsChange={onRowsChange}
       columns={cols}

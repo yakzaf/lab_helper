@@ -16,7 +16,7 @@ export interface ChartAttr {
   table_id: string;
   x: string;
   y: string;
-  plot_title: string;
+  chart_title: string;
   types: string;
 }
 

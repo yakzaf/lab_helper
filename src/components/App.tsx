@@ -10,10 +10,11 @@ const App: FC = () => {
     <div className="app">
       <Navigation />
       <Routes>
+        <Route path="/" element={<InstructionGenerator filename="guide" />} />
         <Route path="/circuit-sim" element={<Simulator />} />
         <Route
           path="/generate-instruction"
-          element={<InstructionGenerator />}
+          element={<InstructionGenerator filename="index" />}
         />
       </Routes>
     </div>
