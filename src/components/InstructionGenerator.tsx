@@ -6,6 +6,8 @@ import directive from "remark-directive";
 import { visit } from "unist-util-visit";
 import { h } from "hastscript/html.js";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import DataTable from "./DataTable";
 import Chart from "./Chart";
 import { SimulatorMd } from "./Simulator";
@@ -62,7 +64,13 @@ const InstructionGenerator: FC<Props> = ({ filename }) => {
   return (
     <div className="mdown-container">
       <ReactMarkdown
-        remarkPlugins={[directive, reactMarkdownRemarkDirective, remarkGfm]}
+        remarkPlugins={[
+          directive,
+          reactMarkdownRemarkDirective,
+          remarkGfm,
+          remarkMath,
+        ]}
+        rehypePlugins={[rehypeKatex]}
         components={customDirectives}
         className="mdown-contents"
       >
