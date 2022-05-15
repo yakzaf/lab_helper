@@ -129,3 +129,21 @@ JavaScript parser component can be created via `:jsParser{}` keyword.
 ```
 :jsParser{}
 ```
+
+___
+
+### Mathematical Expressions
+
+Lab Helper uses common LaTeX syntax for mathematical expressions. They are enclosed in `$` (single dollar sign) for inline parsing and `$$` (double dollar sign) for centered output in a new line.
+
+For syntax details refer to LaTeX Wiki: https://en.wikibooks.org/wiki/LaTeX/Mathematics
+
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$
+
+```
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$
+```
