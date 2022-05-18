@@ -1,4 +1,5 @@
-# Cheat Sheet
+# LabHelper - Cheat Sheet
+Author: Zafar Yakubov
 
 This page serves as a cheat sheet/guide on the capabilities of Lab Helper and its syntax for quick reference during document creation.
 
