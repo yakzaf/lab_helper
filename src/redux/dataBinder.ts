@@ -15,17 +15,9 @@ export const dataBinderSlice = createSlice({
       let key = keysArr[0];
       state.tableData[key] = action.payload[key];
     },
-    removeData: (
-      state: TableState,
-      action: PayloadAction<{ [key: string]: object }>
-    ) => {
-      let keysArr = Object.keys(action.payload);
-      let key = keysArr[0];
-      delete state.tableData[key];
-    },
   },
 });
 
-export const { addData, removeData } = dataBinderSlice.actions;
+export const { addData } = dataBinderSlice.actions;
 
 export default dataBinderSlice.reducer;

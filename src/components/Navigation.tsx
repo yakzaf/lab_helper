@@ -15,9 +15,6 @@ const Navigation: FC = () => {
                 <Nav.Link as={Link} to="/">
                   Home
                 </Nav.Link>
-                <Nav.Link as={Link} to="/circuit-sim">
-                  Falstad Circuit Simulator
-                </Nav.Link>
                 <Nav.Link as={Link} to="/generate-instruction">
                   Instruction Generator
                 </Nav.Link>

@@ -15,27 +15,16 @@ const Chart: FC<ChartAttr> = (attr) => {
     xaxis: {},
     yaxis: {},
     title: "",
+    showlegend: false,
   };
 
   let plotData: Array<Partial<PlotData>> = [];
   if (!_.isEmpty(attr)) {
     const tableId = attr.table_id;
     if (typeof tableState[tableId] !== "undefined") {
-      const cols = tableState[tableId].cols;
-      let xTitleArr = cols.filter((el: { key: string; name: string }) => {
-        return el.key === "x";
-      });
-      let yTitleArr = cols.filter((el: { key: string; name: string }) => {
-        return el.key === "y";
-      });
-      layout.xaxis = { title: xTitleArr[0]["name"] };
-      layout.yaxis = { title: yTitleArr[0]["name"] };
-      layout.title = attr.chart_title;
-
-      const rows = tableState[tableId].rows;
-
-      const xRow = attr.x,
-        yRows = attr.y
+      let xTitleArr = [],
+        yTitleArr = [];
+      const yRows = attr.y
           .slice(1, -1)
           .split(",")
           .map((item: string) => item.trim()),
@@ -43,12 +32,28 @@ const Chart: FC<ChartAttr> = (attr) => {
           .slice(1, -1)
           .split(",")
           .map((item: string) => item.trim());
-
-      // put all the same x row in each object with separate y rows
+      const cols = tableState[tableId].cols;
+      xTitleArr = cols.filter((el: { key: string; name: string }) => {
+        return el.key === attr.x;
+      });
       for (let i = 0; i < yRows.length; i++) {
-        plotData.push({});
+        yTitleArr.push(
+          cols.filter((el: { key: string; name: string }) => {
+            return el.key === yRows[i];
+          })[0].name
+        );
+      }
+      layout.xaxis = { title: xTitleArr[0]["name"] };
+      layout.yaxis = { title: attr.ytitle };
+      layout.showlegend = yTitleArr.length > 1;
+      layout.title = attr.chart_title;
+
+      const rows = tableState[tableId].rows;
+
+      for (let i = 0; i < yRows.length; i++) {
+        plotData.push({ name: yTitleArr[i] });
         plotData[i].x = rows.map((child: { [xRow: string]: string }) =>
-          parseFloat(child[xRow])
+          parseFloat(child[attr.x])
         );
         plotData[i].y = rows.map((child: { [yRow: string]: string }) =>
           parseFloat(child[yRows[i]])
@@ -56,12 +61,6 @@ const Chart: FC<ChartAttr> = (attr) => {
 
         plotData[i].type = traceTypes[i] as PlotType;
       }
-      // plotData.x = rows.map((child: { x: string; y: string }) =>
-      //   parseFloat(child.x)
-      // );
-      // plotData.y = rows.map((child: { x: string; y: string }) =>
-      //   parseFloat(child.y)
-      // );
     }
   }
 

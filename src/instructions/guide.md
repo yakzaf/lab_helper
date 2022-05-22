@@ -99,12 +99,13 @@ Charts are created with a `:chart{}` keyword. The required parameters are:
 * `chart_title` — defines the chart's title,
 * `x` — specifies the column key to use for X axis,
 * `y` — specifies the column key to use for Y axis; takes in more than 1 key for multiple traces. Written in form of `[key1, key2, ...etc]`
+* `ytitle` — defines the title of the Y axis,
 * `types` — defines a type for each trace. Supported types are: `scatter`, `line`, `bar`, `waterfall`. Written in form of `[type1, type2, ...etc]`
 
-:chart{table_id='table-1' chart_title='Chart Title' x='x' y='[y]' types='[scatter]'}
+:chart{table_id='table-1' chart_title='Chart Title' x='x' y='[y]' types='[scatter]' ytitle='y axis title'}
 
 ```
-:chart{table_id='table-1' chart_title='Chart Title' x='x' y='[y]' types='[scatter]'}
+:chart{table_id='table-1' chart_title='Chart Title' x='x' y='[y]' types='[scatter]' ytitle='y axis title'}
 ```
 
 ___

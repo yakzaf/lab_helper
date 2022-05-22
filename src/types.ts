@@ -17,6 +17,7 @@ export interface ChartAttr {
   x: string;
   y: string;
   chart_title: string;
+  ytitle: string;
   types: string;
 }
 

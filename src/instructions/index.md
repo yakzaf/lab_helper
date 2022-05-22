@@ -46,14 +46,14 @@ h 1 4 3
 # `react-data-grid` demonstration:
 ## Illuminance measurements at different wavelengths
 :::div{id='parent'}
-:dataTable{class='asdfdfsdfdsfsdfsf' table_id='table1' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "Wavelength [nm]" } , { "key": "y", "name": "Illuminance [lx]" }]' rows='[{ "id": "1", "x": "", "y": "" } , { "id": "2", "x": "", "y": "" } , { "id": "3", "x": "", "y": "" } , { "id": "4", "x": "", "y": "" } , { "id": "5", "x": "", "y": "" }]'}
+:dataTable{class='asdfdfsdfdsfsdfsf' table_id='table1' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "Wavelength [nm]" } , { "key": "y", "name": "Illuminance [lx]" }]' rows='[{ "id": "1", "x": "0", "y": "4" } , { "id": "2", "x": "3", "y": "5" } , { "id": "3", "x": "4", "y": "8" } , { "id": "4", "x": "5", "y": "10" } , { "id": "5", "x": "8", "y": "12" }]'}
 :::
 
 :dataTable{class='test' table_id='table2' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "Titleasdf" } , { "key": "y", "name": "TestCol" }]' rows='[{ "id": "0", "x": "", "y": "" } , { "id": "1", "x": "", "y": "" } , { "id": "2", "x": "", "y": "" }]'}
 
-:chart{table_id='table1' chart_title='E_v = f(λ)' types='[scatter]' x='x' y='[y]'}
+:chart{table_id='table1' chart_title='E_v = f(λ)' types='[scatter]' x='x' y='[y]' ytitle='Y axis title'}
 asdfasdfasd
-:chart{table_id='table2' chart_title='table2' types='[scatter, bar]' x='x' y='[id, y]'}
+:chart{table_id='table2' chart_title='table2' types='[scatter, bar]' x='x' y='[id, y]' ytitle='lalalalalalalalala'}
 
 :circuitSim{id='csim1'}
 

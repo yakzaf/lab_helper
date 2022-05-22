@@ -1,6 +1,6 @@
 import "./InstructionGenerator.css";
 
-import React, { useEffect, useState, FC } from "react";
+import React, { useState, FC } from "react";
 import ReactMarkdown from "react-markdown";
 import directive from "remark-directive";
 import { visit } from "unist-util-visit";
@@ -10,7 +10,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import DataTable from "./DataTable";
 import Chart from "./Chart";
-import { SimulatorMd } from "./Simulator";
+import Simulator from "./Simulator";
 import CodeParser from "./CodeParser";
 import { ChartAttr, DTAttr, Attr } from "../types";
 
@@ -20,18 +20,20 @@ interface Props {
 
 const InstructionGenerator: FC<Props> = ({ filename }) => {
   const [inst, setInst] = useState("");
-  console.log(filename);
   //fetching the instruction file
-  useEffect(() => {
-    const fetchFile = async () => {
+
+  const fetchFile = async () => {
+    try {
       const file = await import(`../instructions/${filename}.md`);
       const res = await fetch(file.default);
       const text = await res.text();
       setInst(text);
-    };
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-    fetchFile().catch(console.error);
-  });
+  fetchFile();
 
   const reactMarkdownRemarkDirective = () => {
     return transform;
@@ -42,6 +44,7 @@ const InstructionGenerator: FC<Props> = ({ filename }) => {
 
     function ondirective(node: any) {
       let data = node.data || (node.data = {});
+      console.log(node);
       if (
         node.type === "textDirective" ||
         node.type === "leafDirective" ||
@@ -57,7 +60,7 @@ const InstructionGenerator: FC<Props> = ({ filename }) => {
   const customDirectives: any = {
     dataTable: (attr: DTAttr) => DataTable(attr),
     chart: (attr: ChartAttr) => Chart(attr),
-    circuitSim: (attr: any) => SimulatorMd(attr),
+    circuitSim: (attr: any) => Simulator(attr),
     jsParser: (attr: Attr) => CodeParser(attr),
   };
 
