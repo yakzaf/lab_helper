@@ -15,7 +15,7 @@ const CodeParser: FC<Attr> = (attr) => {
     e.preventDefault();
 
     try {
-      setParsedVal(Function("return " + value)());
+      setParsedVal(Function('"use strict";return (' + value + ")")());
     } catch (err) {
       console.log(err);
     }
