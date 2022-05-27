@@ -25,13 +25,13 @@ const CodeParser: FC<Attr> = (attr) => {
     <div className="code-parser">
       <form id="parser-form" onSubmit={handleSubmit}>
         <textarea
-          id="parser-input"
+          className="ta-input"
           value={value}
           onChange={handleValueChange}
         />
         <input type="submit" value="Evaluate" className="btn btn-primary" />
       </form>
-      <textarea id="parser-output" value={parsedVal} readOnly />
+      <textarea className="ta-output" value={parsedVal} readOnly />
     </div>
   );
 };

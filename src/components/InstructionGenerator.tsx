@@ -4,9 +4,10 @@ import React, { useState, FC } from "react";
 import ReactMarkdown from "react-markdown";
 import directive from "remark-directive";
 import { visit } from "unist-util-visit";
-import { h } from "hastscript/html.js";
+import { h } from "hastscript/html";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
+import remarkImages from "remark-images";
 import rehypeKatex from "rehype-katex";
 import DataTable from "./DataTable";
 import Chart from "./Chart";
@@ -72,6 +73,7 @@ const InstructionGenerator: FC<Props> = ({ filename }) => {
           reactMarkdownRemarkDirective,
           remarkGfm,
           remarkMath,
+          remarkImages,
         ]}
         rehypePlugins={[rehypeKatex]}
         components={customDirectives}

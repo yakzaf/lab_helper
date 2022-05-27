@@ -1,82 +1,81 @@
-A paragraph with *emphasis* and **strong importance**.
-> A block quote with ~strikethrough~ and a URL: https://reactjs.org.
-* Lists
-* [ ] todo
-* [x] done
-
-A table:
-
-|                a                            |        b               |       c                |
-|                -                            |        -               |       -                |
-| :input{id=input-test-11 class='test-class'} | :input{.input-test-12} | :input{.input-test-13} |
-| :input{.input-test-21}                      | :input{.input-test-22} | :input{.input-test-23} |
+:dataTable{table_id='title' columns='[{ "key": "students", "name": "Students:" } , { "key": "info", "name": "Details: " }]' rows='[{ "students": "Student 1", "info": "Date: 23/02/2022"} , { "students": "Student 2", "info": "Instructor: Name Surname"} , { "students": "Student 3", "info": "Grade: 5"} , { "students": "Student 4", "info": "" }]'}
 
 
-```mermaid
-gantt
-dateFormat  YYYY-MM-DD
-title Adding GANTT diagram to mermaid
-excludes weekdays 2014-01-10
+# Measurement of Reflectance and Transmittance
 
-section A section
-Completed task            :done,    des1, 2014-01-06,2014-01-08
-Active task               :active,  des2, 2014-01-09, 3d
-Future task               :         des3, after des2, 5d
-Future task2               :         des4, after des3, 5d
-```
+## Measurement Procedure
 
-```falstad
-$ 1 0.000005 10.20027730826997 50 5 43 5e-11
-r 176 80 384 80 0 10
-s 384 80 448 80 0 1 false
-w 176 80 176 352 0
-c 384 352 176 352 0 0.000015 -6.923563183975744 -10
-l 384 80 384 352 0 1 0.026911944843541355 0
-v 448 352 448 80 0 0 40 5 0 0 0.5
-r 384 352 448 352 0 100
-o 4 64 0 4099 20 0.05 0 2 4 3
-o 3 64 0 4099 20 0.05 1 2 3 3
-o 0 64 0 4099 0.625 0.05 2 2 0 3
-38 3 F1 0 0.000001 0.000101 -1 Capacitance
-38 4 F1 0 0.01 1.01 -1 Inductance
-38 0 F1 0 1 101 -1 Resistance
-h 1 4 3
-```
+The purpose of the experiment is to measure the reflectance and transmittance of different samples. This is done with the aid of an illuminance meter, a reflectometer, a transmittance meter, standard of reflectance made by Ocean Optics and a black body (tube with black coated interior). For the experiment we have to analyse the reflectance using two different methods:
 
-# `react-data-grid` demonstration:
-## Illuminance measurements at different wavelengths
-:::div{id='parent'}
-:dataTable{class='asdfdfsdfdsfsdfsf' table_id='table1' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "Wavelength [nm]" } , { "key": "y", "name": "Illuminance [lx]" }]' rows='[{ "id": "1", "x": "0", "y": "4" } , { "id": "2", "x": "3", "y": "5" } , { "id": "3", "x": "4", "y": "8" } , { "id": "4", "x": "5", "y": "10" } , { "id": "5", "x": "8", "y": "12" }]'}
-:::
-
-:dataTable{class='test' table_id='table2' columns='[{ "key": "id", "name": "ID" } , { "key": "x", "name": "Titleasdf" } , { "key": "y", "name": "TestCol" }]' rows='[{ "id": "0", "x": "", "y": "" } , { "id": "1", "x": "", "y": "" } , { "id": "2", "x": "", "y": "" }]'}
-
-:chart{table_id='table1' chart_title='E_v = f(λ)' types='[scatter]' x='x' y='[y]' ytitle='Y axis title'}
-asdfasdfasd
-:chart{table_id='table2' chart_title='table2' types='[scatter, bar]' x='x' y='[id, y]' ytitle='lalalalalalalalala'}
-
-:circuitSim{id='csim1'}
-
-testetest
-test
-
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut 
-
-enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in
-
-voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
-Code parser test:
-:jsParser{id='parser-test'}
-
-Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following
-equation.
+(i) Comparison between reflectance of standard and reflectance of the sample   
+To do this it is necessary to adjust the arm position of the integrating sphere by rotating it and ensuring that the light source is located at the bottom position. In this position we measure the illuminance of 10 different samples and of the black body by placing them on top of the photovoltaic cell. The black body measurement is used to reduce systematic error. Lastly, using this method we have to measure the illuminance of 5 known manufacturer samples and compare the measured results to the ones provided by the manufacturers. On the basis of the illuminance measurements, we have to calculate the reflectance’s of the samples under test using the relation stated below.
 
 $$
-L = \frac{1}{2} \rho v^2 S C_L
+\rho_x = \rho\frac{E_x-E_0}{E_s-E_0}
 $$
 $$
-\cos \frac{2}{\theta}
+E_0 = 1.3\ lx,\ 
+E_s = 37.8\ lx,\ 
+\rho_s = 98\%
 $$
+
+(ii) Taylor’s method
+The procedure is almost similar to that described in the 1st method, but the difference is the arm position of the integrating sphere and no use of the standard of reflectance. In this method the arm points upwards ensuring that the light source is located at the top position. For the 10 unknown samples and 5 samples with manufacturer information we have to measure the illuminances and on the basis of the measurements compute reflectance’s using the relation below. 
+
+$$
+\rho_x = \frac{E_{bottom}-E_0}{E_{top}},
+$$
+where $E_{bottom}$ is from the 1st method
+
+The measurement of transmittance is done using a transmittance meter. For this procedure we have to measure the illuminance when no sample is placed between the photometer head and the luminaire and the illuminance when the sample is in-between the two. These measurements are repeated for 8 different samples and for 4 random combinations of the samples. We also have to use two different luminaires to determine their impact on transmittance and for our case we used an LED bulb and a standard incandescent bulb. On the basis of the illuminance measurements, we have to calculate the transmittance using the relation below.
+
+$$
+\tau_x = \frac{E_s}{E_0}
+$$
+$$
+E_{0LED} = 1910\ lx.\ E_{0inc} = 620\ lx
+$$
+
+## Reflectance of 10 Samples
+
+Reflectance measurements were taken from 10 material samples with the results presented below.
+
+:dataTable{table_id='table-1' columns='[{ "key": "sample", "name": "Sample" } , { "key": "illum1", "name": "Illuminance-1st mtd [lx]" } , { "key": "refl1", "name": "Reflectance-1st mtd [%]" } , { "key": "illum2", "name": "Illuminance-2nd mtd [lx]" } , { "key": "refl2", "name": "Reflectance-2nd mtd [%]" }]' rows='[{ "sample": "1", "illum1": "10.4", "refl1":"24.4", "illum2": "37.9", "refl2":"24" } , { "sample": "2", "illum1": "34.1", "refl1":"88.1", "illum2": "39.8", "refl2":"82.4" } , { "sample": "3", "illum1": "4.2", "refl1":"7.8", "illum2": "37.6", "refl2":"7.7" } , { "sample": "4", "illum1": "18.4", "refl1":"45.9", "illum2": "38.5", "refl2":"44.4" } , { "sample": "5", "illum1": "26.5", "refl1":"67.7", "illum2": "39.1", "refl2":"64.5" } , { "sample": "6", "illum1": "5.4", "refl1":"11", "illum2": "37.6", "refl2":"10.9" } , { "sample": "7", "illum1": "8.1", "refl1":"18.3", "illum2": "37.8", "refl2":"18" } , { "sample": "8", "illum1": "33.2", "refl1":"85.6", "illum2": "39.5", "refl2":"80.8" } , { "sample": "9", "illum1": "19.6", "refl1":"49.1", "illum2": "38.6", "refl2":"47.4" }]' caption='Table 1. Measurement results of reflectance for 10 samples'}
+
+:chart{table_id='table-1' chart_title='Reflectance measurement' x='sample' y='[refl1, refl2]' types='[bar, bar]' ytitle='Reflectance [%]' caption='Figure 1. Comparison between two methods of reflectance measurements for 10 samples'}
+
+### Comments:
+
+:textarea{class='ta-input'}
+
+## Reflectance of 5 Known Samples
+
+:dataTable{table_id='table-2' columns='[{ "key": "sample", "name": "Sample" } , { "key": "illum1", "name": "Illuminance-1st mtd [lx]" } , { "key": "refl1", "name": "Reflectance-1st mtd [%]" } , { "key": "illum2", "name": "Illuminance-2nd mtd [lx]" } , { "key": "refl2", "name": "Reflectance-2nd mtd [%]" } , { "key": "spec", "name": "Manufacturer specification [%]" }]' rows='[{ "sample": "1", "illum1": "9.9", "refl1": "23.1", "illum2": "38.4", "refl2": "22.4", "spec": "11.2" } , { "sample": "2", "illum1": "4.3", "refl1": "8.1", "illum2": "38.1", "refl2": "7.9", "spec": "4.7" } , { "sample": "3", "illum1": "9.2", "refl1": "21.2", "illum2": "38.4", "refl2": "20.6", "spec": "24" } , { "sample": "4", "illum1": "22.9", "refl1": "58", "illum2": "39.3", "refl2": "55", "spec": "54" } , { "sample": "5", "illum1": "35.3", "refl1": "91.3", "illum2": "40.2", "refl2": "84.6", "spec": "86.7" }]' caption='Table 2. Measurement results of reflectance for 5 known samples'}
+
+:chart{table_id='table-2' chart_title='Reflectance measurement' x='sample' y='[refl1, refl2, spec]' types='[bar, bar, bar]' ytitle='Reflectance [%]' caption='Figure 2. Comparison between two methods of reflectance measurements for 5 known samples'}
+
+### Comments:
+
+:textarea{class='ta-input'}
+
+## Transmittance of 8 Given Samples
+
+LED bulb, $E_0 = 1910\ lx$
+
+:dataTable{table_id='table-3' columns='[{ "key": "sample", "name": "Sample" } , { "key": "e_s", "name": "E_s [lx]" } , { "key": "tau_x", "name": "τ_x[%]" }]' rows='[{ "sample": "1", "e_s": "1310", "tau_x":"68.6"} , { "sample": "2", "e_s": "1610", "tau_x":"84.3"} , { "sample": "3", "e_s": "1260", "tau_x":"66"} , { "sample": "4", "e_s": "620", "tau_x":"32.5"} , { "sample": "5", "e_s": "1330", "tau_x":"69.6"} , { "sample": "6", "e_s": "1050", "tau_x":"55"} , { "sample": "7", "e_s": "760", "tau_x":"39.8"}]' caption='Table 3. Measurement results of transmittance using a LED bulb'}
+
+:chart{table_id='table-3' chart_title='Transmittance measurement (LED)' x='sample' y='[tau_x]' types='[bar]' ytitle='Transmittance [%]' caption='Figure 3. Transmittance measurements for 8 samples & their combinations (LED bulb)'}
+
+Incandescent bulb, $E_0 = 620\ lx$
+
+:dataTable{table_id='table-4' columns='[{ "key": "sample", "name": "Sample" } , { "key": "e_s", "name": "E_s [lx]" } , { "key": "tau_x", "name": "τ_x[%]" }]' rows='[{ "sample": "1", "e_s": "400", "tau_x":"64.5"} , { "sample": "2", "e_s": "530", "tau_x":"85.5"} , { "sample": "3", "e_s": "405", "tau_x":"65.3"} , { "sample": "4", "e_s": "240", "tau_x":"38.7"} , { "sample": "5", "e_s": "450", "tau_x":"72.6"} , { "sample": "6", "e_s": "342", "tau_x":"55.2"} , { "sample": "7", "e_s": "247", "tau_x":"39.8"}]' caption='Table 4. Measurement results of transmittance using an incandescent bulb'}
+
+:chart{table_id='table-4' chart_title='Transmittance measurement (incandescent)' x='sample' y='[tau_x]' types='[bar]' ytitle='Transmittance [%]' caption='Figure 3. Transmittance measurements for 8 samples & their combinations (incandescent bulb)'}
+
+### Comments:
+
+:textarea{class='ta-input'}
+
+## Conclusions
+
+:textarea{class='ta-input'}

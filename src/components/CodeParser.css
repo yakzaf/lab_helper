@@ -9,6 +9,6 @@
     display: flex;
     flex-direction: column;
 }
-#parser-form, #parser-input, #parser-output {
+#parser-form, .ta-input, .ta-output {
     width: 100%;
 }

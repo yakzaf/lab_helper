@@ -58,12 +58,15 @@ const DataTable: FC<DTAttr> = (attr) => {
   //   // setRows(rowsMdObj);
   // }
   return (
-    <DataGrid
-      className={`${attr.className} rdg-light`}
-      rows={rows}
-      onRowsChange={onRowsChange}
-      columns={cols}
-    />
+    <div className="dataTable">
+      <DataGrid
+        className={`${attr.className} rdg-light`}
+        rows={rows}
+        onRowsChange={onRowsChange}
+        columns={cols}
+      />
+      <p style={{ textAlign: "center" }}>{attr.caption}</p>
+    </div>
   );
 };
 

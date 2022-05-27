@@ -149,3 +149,9 @@ $$
 L = \frac{1}{2} \rho v^2 S C_L
 $$
 ```
+
+___
+
+### Image Insertion
+
+An image can be added to its designated `public` folder and inserted into the document via `![alt-text](filename)` syntax.

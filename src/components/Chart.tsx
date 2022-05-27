@@ -64,7 +64,17 @@ const Chart: FC<ChartAttr> = (attr) => {
     }
   }
 
-  return <Plot data={plotData} layout={layout} />;
+  return (
+    <div className="chart">
+      <div
+        className="chart-ctd"
+        style={{ display: "grid", justifyContent: "center" }}
+      >
+        <Plot data={plotData} layout={layout} />
+      </div>
+      <p style={{ textAlign: "center" }}>{attr.caption}</p>
+    </div>
+  );
 };
 
 export default Chart;

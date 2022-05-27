@@ -9,6 +9,7 @@ export interface DTAttr {
   table_id: string;
   id?: string;
   className?: string;
+  caption?: string;
 }
 
 export interface ChartAttr {
@@ -19,6 +20,7 @@ export interface ChartAttr {
   chart_title: string;
   ytitle: string;
   types: string;
+  caption?: string;
 }
 
 export interface TableState {
