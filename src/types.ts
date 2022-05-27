@@ -23,6 +23,22 @@ export interface ChartAttr {
   caption?: string;
 }
 
+export interface MIAttr {
+  className?: string;
+  id: string;
+}
+
+export interface MOAttr {
+  className?: string;
+  id?: string;
+  target_ids: string;
+  eq: string;
+}
+
 export interface TableState {
   [tableId: string]: any;
+}
+
+export interface MIState {
+  [fieldId: string]: any;
 }
