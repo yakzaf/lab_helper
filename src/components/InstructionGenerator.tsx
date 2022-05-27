@@ -13,7 +13,9 @@ import DataTable from "./DataTable";
 import Chart from "./Chart";
 import Simulator from "./Simulator";
 import CodeParser from "./CodeParser";
-import { ChartAttr, DTAttr, Attr } from "../types";
+import MathInput from "./MathInput";
+import { ChartAttr, DTAttr, Attr, MIAttr, MOAttr } from "../types";
+import MathOutput from "./MathOutput";
 
 interface Props {
   filename: string;
@@ -45,7 +47,7 @@ const InstructionGenerator: FC<Props> = ({ filename }) => {
 
     function ondirective(node: any) {
       let data = node.data || (node.data = {});
-      console.log(node);
+      // console.log(node);
       if (
         node.type === "textDirective" ||
         node.type === "leafDirective" ||
@@ -63,6 +65,8 @@ const InstructionGenerator: FC<Props> = ({ filename }) => {
     chart: (attr: ChartAttr) => Chart(attr),
     circuitSim: (attr: any) => Simulator(attr),
     jsParser: (attr: Attr) => CodeParser(attr),
+    mathInput: (attr: MIAttr) => MathInput(attr),
+    mathOutput: (attr: MOAttr) => MathOutput(attr),
   };
 
   return (

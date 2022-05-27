@@ -134,7 +134,7 @@ JavaScript parser component can be created via `:jsParser{}` keyword.
 
 ___
 
-### Mathematical Expressions
+### Mathematical Expression Formatting
 
 Lab Helper uses common LaTeX syntax for mathematical expressions. They are enclosed in `$` (single dollar sign) for inline parsing and `$$` (double dollar sign) for centered output in a new line.
 
@@ -151,6 +151,23 @@ $$
 ```
 
 ___
+
+### Mathematical Expression Fields
+
+Lab Helper has two types of custom text fields for mathematical expression evaluation: `:mathInput{}` and `:mathOutput`.
+
+* `mathInput` must receive an `id` attribute
+* `mathOutput` must receive a list of `mathInput` id's to target in `target_ids` attribute and a mathematical expression to evaluate in `eq`, where the variables used in the expression must correspond to the elements in the `target_ids` list. The whole string expression attributed to `eq`, as well as the id's in the expression **MUST** be surrounded by spaces.
+
+:mathInput{id='x'}
+:mathInput{id='y'}
+:mathOutput{target_ids='[x, y]' eq=' x + y '}
+
+```
+:mathInput{id='x'}
+:mathInput{id='y'}
+:mathOutput{target_ids='[x, y]' eq=' x + y '}
+```
 
 ### Image Insertion
 
