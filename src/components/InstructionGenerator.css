@@ -11,3 +11,9 @@
     width: 75%;
     max-width: 1068px;
 }
+
+.centered-img {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}

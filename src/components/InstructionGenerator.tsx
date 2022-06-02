@@ -7,14 +7,14 @@ import { visit } from "unist-util-visit";
 import { h } from "hastscript/html";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import remarkImages from "remark-images";
 import rehypeKatex from "rehype-katex";
 import DataTable from "./DataTable";
 import Chart from "./Chart";
 import Simulator from "./Simulator";
 import CodeParser from "./CodeParser";
 import MathInput from "./MathInput";
-import { ChartAttr, DTAttr, Attr, MIAttr, MOAttr } from "../types";
+import Image from "./Image";
+import { ChartAttr, DTAttr, Attr, MIAttr, MOAttr, ImageAttr } from "../types";
 import MathOutput from "./MathOutput";
 
 interface Props {
@@ -67,6 +67,7 @@ const InstructionGenerator: FC<Props> = ({ filename }) => {
     jsParser: (attr: Attr) => CodeParser(attr),
     mathInput: (attr: MIAttr) => MathInput(attr),
     mathOutput: (attr: MOAttr) => MathOutput(attr),
+    image: (attr: ImageAttr) => Image(attr),
   };
 
   return (
@@ -77,7 +78,6 @@ const InstructionGenerator: FC<Props> = ({ filename }) => {
           reactMarkdownRemarkDirective,
           remarkGfm,
           remarkMath,
-          remarkImages,
         ]}
         rehypePlugins={[rehypeKatex]}
         components={customDirectives}

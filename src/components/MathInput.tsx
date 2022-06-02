@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { useDispatch } from "react-redux";
 import { recordInput } from "../redux/mathFieldVals";
 import { MIAttr } from "../types";
@@ -6,10 +6,8 @@ import { MIAttr } from "../types";
 const MathInput: FC<MIAttr> = (attr) => {
   let fieldValues = {};
   const dispatch = useDispatch();
-  const [value, setValue] = useState("");
 
   const handleValueChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setValue(e.currentTarget.value);
     try {
       fieldValues = {
         [attr.id]: e.currentTarget.value,
@@ -21,9 +19,11 @@ const MathInput: FC<MIAttr> = (attr) => {
   };
 
   return (
-    <div className="math-input">
-      <input value={value} onInput={handleValueChange} />
-    </div>
+    <input
+      id={attr.id}
+      onInput={handleValueChange}
+      className={attr.className}
+    />
   );
 };
 

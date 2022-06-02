@@ -32,7 +32,15 @@ export interface MOAttr {
   className?: string;
   id?: string;
   target_ids: string;
-  eq: string;
+  exp: string;
+}
+
+export interface ImageAttr {
+  className?: string;
+  id?: string;
+  filename: string;
+  caption?: string;
+  centered?: string;
 }
 
 export interface TableState {

@@ -10,7 +10,7 @@ const MathOutput: FC<MOAttr> = (attr) => {
     .map((item: string) => item.trim());
   let targetStates =
     useSelector((state: MIState) => state.mFReducer.mathFields) || {};
-  let parsedEquation = attr.eq;
+  let parsedEquation = attr.exp;
   for (let i = 0; i < targetIds.length; i++) {
     parsedEquation = parsedEquation.replaceAll(
       ` ${targetIds[i]} `,
@@ -26,12 +26,10 @@ const MathOutput: FC<MOAttr> = (attr) => {
     } catch (err) {
       console.log(err);
     }
-  }, [targetStates]);
+  }, [parsedEquation]);
 
   return (
-    <div className="math-output">
-      <input value={solvedVal} readOnly />
-    </div>
+    <input value={solvedVal} id={attr.id} className={attr.className} readOnly />
   );
 };
 
