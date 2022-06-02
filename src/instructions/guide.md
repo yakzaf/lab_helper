@@ -1,7 +1,7 @@
-# Lab Helper - Cheat Sheet
+# Lab Helper - Usage Guide
 Author: Zafar Yakubov
 
-This page serves as a cheat sheet/guide on the capabilities of Lab Helper and its syntax for quick reference during document creation.
+This page serves as a guide on the capabilities of Lab Helper and its syntax for quick reference during document creation.
 
 ## Basic Markdown Syntax
 
